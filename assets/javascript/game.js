@@ -2,7 +2,6 @@
 $(document).ready(function() {
 
 //Objects containing trivia questions and answers
-
 var worldHistory = {
 	question1: "",
 	answerA: "", 
@@ -36,11 +35,17 @@ var geograpy = {
 	answerC: "Germany, Poland, Hungary, Austria",
 	answerD: "Germany, Slovenia, Slovakia, Hungary",
 
-	question3: "",
-	answerA: "", 
-	answerB: "",
-	answerC: "",
-	answerD: "",,
+	question3: "What is the capitol of Nigeria?",
+	answerA: "Abuja", 
+	answerB: "Nairobi",
+	answerC: "Lagos",
+	answerD: "Yaounde",
+
+	question4: "Which river is the shortest?"
+	answerA: "Yangtze"
+	answerB: "Yellow"
+	answerC: "Parana"
+	answerD: "Congo"
 
 }
 
@@ -66,27 +71,66 @@ var world foods = {
 	answer3: ""
 }
 
-var countDown = 30;
-var score = 0;
-var guessesLeft = 3;
+var countDown;
+var correctAnswers;
+var incorrectAnswers;
+var answersGuessed = [];
 
-//Geography Button
-$("#geography").on("click", function() {
+
+	function timer() {
+	//Create the timer div, pop it into the html,  and start the clock at 1:30 
+	//Start the countdown
+	//If the value of the timer reaches zero, call the results function
+	};
+
+	function results() {
+	//Compare the answers guessed to the correct answers
+	//Increment correct answers by one if the answer is correct, increment incorrect answers by one if the answer is incorrect
+	//Create the results div, pop it into the html
+
+	};
+
+	function convertTime() {
+	//Steal the code from the stopwatch activity to convert time	
+	}
+
+	//Geography Button
+	$("#geography").on("click", function() {
+	//Show the geography questions
+	
+	//Show the answer choices as radio buttons
+	//Don't allow selection of more than one radio button
+	//Call the timer function
+	});
+
+	//World History Button
+	$("#worldhistory").on("click", function() {
+	//Show the world history questions
+	//Show the answer choices as radio buttons
+	//Don't allow selection of more than one radio button
+	//Call the timer function
 
 	});
 
-//World History Button
-$("#worldhistory").on("click", function() {
+	$("#worldlanguages").on("click", function() {
+	//Show the world languages questions
+	//Show the answer choices as radio buttons
+	//Don't allow selection of more than one radio button
+	//Call the timer function
 
 	});
 
-$("#worldlanguages").on("click", function() {
+	$("#worldfoods").on("click", function() {
+	//Show the world foods questions
+	//Show the answer choices as radio buttons
+	//Don't allow selection of more than one radio button
+	//Call the timer function
 
 	});
 
-$("#worldfoods").on("click", function() {
 
-	});
+
+
 
 
 
