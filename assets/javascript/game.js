@@ -86,8 +86,8 @@ var intervalID;
 	//Reset the clock to 1:30
 
 	time = 0;
-	$('#questions').empty();
-    $('#questions').text("01:30");
+	$('#clock').empty();
+    $('#clock').text("01:30");
 
 	}
 
@@ -104,33 +104,34 @@ var intervalID;
 	};
 
 	function stop() {
+	
+	/* Create a function to stop the countdown.  Will call this when all questions
+	have been answered and the user hits submit */
+
 	clearInterval(stop);
 	clockRunning = false;
 
 	};
 
 	function count() {
-		time--;
 
-		var counter = convertTime(time);
+	//Decrement the time by one 
+	time--;
 
-		$('#questions').html(counter);
+	//Get the current time, pass it into the time converter, and
+	//save the result as a variable.
+
+	var counter = convertTime(time);
+
+	//Display the converted time in the "clock" div.
+
+	$('#clock').html(counter);
+	
 	}; 
-
-	function results() {
-	//Compare the answers guessed to the correct answers
-
-	for (i = 0; i < answerArray.length) {
-		if 
-	}
-
-	//Increment correct answers by one if the answer is correct, increment incorrect answers by one if the answer is incorrect
-	//Create the results div, pop it into the html
-
-	};
 
 	function convertTime(t) {
 	//Steal the code from the stopwatch activity to convert time	
+	
 	var minutes = Math.floor(t / 60);
     var seconds = t - (minutes * 60);
 
@@ -147,11 +148,47 @@ var intervalID;
     }
 
     return minutes + ":" + seconds;
-  	}
+  	};
 
-	//Geography Button
+  	function capture() {
+  	//Need to research how to do this, but the intention here
+  	//is to map the radio button answer choices to letters a, b, c, or d
+
+
+  	//Push the answers chosen into an array
+  	$(?'.userAnswers'?).val(this).push(answersGuessed);
+  	
+  	//send the answers Guessed to the result function to compare
+  	result(answersGuessed);
+
+  	};
+
+  	function results(a) {
+  	
+  	//compare the answersGuessed to the answers object of the array
+  	//Need to update theclickedcateory.answers with the correct value
+
+	for (i = 0; i < [theclickedcategory.answers].length); i++ {
+		if ([theclickedcategory].answers[i] === a[i]) {
+	
+		correctAnswers++;
+		
+		} else if ([theclickedcategory].answers[i] != answersGuessed[i])
+
+		incorrectAnswers++;
+	}
+
+	//Create the results div, and pop it into the html
+	$('#questions').html("<p>Correct Answers " + correctAnswers + "</p>" +
+		"<p>Incorrect Answers " + incorrectAnswers + "</p>")
+
+	};
+
+
+	//Geography Button-- I can set a class on this button and reduce many lines of code below
 	$("#geography").on("click", function() {
 	//Show the geography questions
+	//
 
 	//Show the answer choices as radio buttons
 	//Don't allow selection of more than one radio button
@@ -186,11 +223,6 @@ var intervalID;
 	//Call the timer function
 
 	});
-
-
-
-
-
 
 
 });
