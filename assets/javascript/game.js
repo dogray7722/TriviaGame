@@ -1,28 +1,28 @@
-//Document function
-$(document).ready(function() {
 
-//Objects containing trivia questions and answers
+// Objects containing trivia questions and answers
 var worldHistory = {
-	question1: "",
-	answerA: "", 
-	answerB: "",
-	answerC: "",
-	answerD: "",
 
-	question2: "",
-	answerA: "", 
-	answerB: "",
-	answerC: "",
-	answerD: "",
+	question1: 0, 
+	answerA:  0,
+	answerB: 0,
+	answerC: 0,
+	answerD: 0,
 
-	question3: "",
-	answerA: "", 
-	answerB: "",
-	answerC: "",
-	answerD: "",
+	question2: 0,
+	answerA:  0,
+	answerB: 0,
+	answerC: 0,
+	answerD: 0,
+
+	question3: 0,
+	answerA:  0,
+	answerB: 0,
+	answerC: 0,
+	answerD: 0
 }
 
-var geograpy = {
+var geography = {
+
 	question1: "Which country has legislative authority over Greenland?",
 	answerA: "USA", 
 	answerB: "Iceland",
@@ -30,28 +30,27 @@ var geograpy = {
 	answerD: "Sweden",
 
 	question2: "Which four countries border the Czech Republic?",
-	answerA: "Germany, Poland, Austria, Slovenia", 
-	answerB: "Germany, Poland, Austria, Slovakia",
-	answerC: "Germany, Poland, Hungary, Austria",
-	answerD: "Germany, Slovenia, Slovakia, Hungary",
+	answerE: "Germany, Poland, Austria, Slovenia", 
+	answerF: "Germany, Poland, Austria, Slovakia",
+	answerG: "Germany, Poland, Hungary, Austria",
+	answerH: "Germany, Slovenia, Slovakia, Hungary",
 
 	question3: "What is the capitol of Nigeria?",
-	answerA: "Abuja", 
-	answerB: "Nairobi",
-	answerC: "Lagos",
-	answerD: "Yaounde",
+	answerI: "Abuja", 
+	answerJ: "Nairobi",
+	answerK: "Lagos",
+	answerL: "Yaounde",
 
 	question4: "Which river is the shortest?",
-	answerA: "Yangtze",
-	answerB: "Yellow",
-	answerC: "Parana",
-	answerD: "Congo",
+	answerM: "Yangtze",
+	answerN: "Yellow",
+	answerO: "Parana",
+	answerP: "Congo",
 
-	answers: ["c","b","a","d"];
-
+	answers: ["c","b","a","d"]
 }
 
-var world languages = {
+var worldLanguages = {
 	question1: "",
 	answer1: "",
 
@@ -62,7 +61,7 @@ var world languages = {
 	answer3: ""
 }
 
-var world foods = {
+var worldFoods = {
 	question1: "",
 	answer1: "",
 
@@ -80,6 +79,7 @@ var time = 0;
 var clockRunning = false;
 var intervalID;
 
+$(document).ready(function() {
 
 	function reset () {
 
@@ -87,9 +87,9 @@ var intervalID;
 
 	time = 0;
 	$('#clock').empty();
-    $('#clock').text("01:30");
+    $('#clock').html(01 + ":" + 30);
 
-	}
+	};
 
 	function timerStart() {
 	
@@ -97,6 +97,7 @@ var intervalID;
 
     if(!clockRunning) {
     	intervalID = setInterval(count, 1000);
+    	clockRunning = true;
     	}
 
 	//If the value of the timer reaches zero, call the results function
@@ -150,79 +151,136 @@ var intervalID;
     return minutes + ":" + seconds;
   	};
 
-  	function capture() {
-  	//Need to research how to do this, but the intention here
-  	//is to map the radio button answer choices to letters a, b, c, or d
+	//Geography Button-- This will be the template for the other questions.  DRY up later.
+	$("#geo").on("click", function() {
 
-
-  	//Push the answers chosen into an array
-  	$(?'.userAnswers'?).val(this).push(answersGuessed);
-  	
-  	//send the answers Guessed to the result function to compare
-  	result(answersGuessed);
-
-  	};
-
-  	function results(a) {
-  	
-  	//compare the answersGuessed to the answers object of the array
-  	//Need to update theclickedcateory.answers with the correct value
-
-	for (i = 0; i < [theclickedcategory.answers].length); i++ {
-		if ([theclickedcategory].answers[i] === a[i]) {
-	
-		correctAnswers++;
-		
-		} else if ([theclickedcategory].answers[i] != answersGuessed[i])
-
-		incorrectAnswers++;
-	}
-
-	//Create the results div, and pop it into the html
-	$('#questions').html("<p>Correct Answers " + correctAnswers + "</p>" +
-		"<p>Incorrect Answers " + incorrectAnswers + "</p>")
-
-	};
-
-
-	//Geography Button-- I can set a class on this button and reduce many lines of code below
-	$("#geography").on("click", function() {
 	//Show the geography questions
-	//
-
+	$("#questions").html("<h3>" + geography.question1 + "</h3>")
+		
 	//Show the answer choices as radio buttons
-	//Don't allow selection of more than one radio button
-	//Call the timer function
-	timerStart();
+	var radioBtnA = $('<input type="radio" id="radioA" name="geography1"><label for="radioA">' + geography.answerA + '</label>' + '<br>');
+    	radioBtnA.appendTo('#questions');
+
+	var radioBtnB = $('<input type="radio" id="radioB" name="geography1"><label for="radioB">' + geography.answerB + '</label>' + '<br>');
+    	radioBtnB.appendTo('#questions');
+
+	var radioBtnC = $('<input type="radio" id="radioC" name="geography1"><label for="radioC">' + geography.answerC + '</label>' + '<br>');
+    	radioBtnC.appendTo('#questions');
+
+	var radioBtnD = $('<input type="radio" id="radioD" name="geography1"><label for="radioD">' + geography.answerD + '</label>');
+    	radioBtnD.appendTo('#questions');
+
+	$("#questions").append("<h3>" + geography.question2 + "</h3>");
+
+	var radioBtnE = $('<input type="radio" id="radioE" name="geography2"><label for="radioD">' + geography.answerE + '</label>' + '<br>');
+    	radioBtnE.appendTo('#questions');
+
+ 	var radioBtnF = $('<input type="radio" id="radioF" name="geography2"><label for="radioF">' + geography.answerF + '</label>' + '<br>');
+    	radioBtnF.appendTo('#questions');
+
+    var radioBtnG = $('<input type="radio" id="radioG" name="geography2"><label for="radioG">' + geography.answerG + '</label>' + '<br>');
+    	radioBtnG.appendTo('#questions');
+
+    var radioBtnH = $('<input type="radio" id="radioH" name="geography2"><label for="radioH">' + geography.answerH + '</label>' + '<br>');
+    	radioBtnH.appendTo('#questions');
+
+	$("#questions").append("<h3>" + geography.question3 + "</h3>");
+
+	var radioBtnI = $('<input type="radio" id="radioI" name="geography3"><label for="radioI">' + geography.answerI + '</label>' + '<br>');
+    	radioBtnI.appendTo('#questions');
+
+    var radioBtnJ = $('<input type="radio" id="radioJ" name="geography3"><label for="radioJ">' + geography.answerJ + '</label>' + '<br>');
+    	radioBtnJ.appendTo('#questions');
+
+    var radioBtnK = $('<input type="radio" id="radioK" name="geography3"><label for="radioK">' + geography.answerK + '</label>' + '<br>');
+    	radioBtnK.appendTo('#questions');
+
+    var radioBtnL = $('<input type="radio" id="radioL" name="geography3"><label for="radioL">' + geography.answerL + '</label>' + '<br>');
+    	radioBtnL.appendTo('#questions');
+
+	$("#questions").append("<h3>" + geography.question4 + "</h3>");
+
+	var radioBtnM = $('<input type="radio" id="radioM" name="geography4"><label for="radioM">' + geography.answerM + '</label>' + '<br>');
+    	radioBtnM.appendTo('#questions');
+
+    var radioBtnN = $('<input type="radio" id="radioN" name="geography4"><label for="radioN">' + geography.answerN + '</label>' + '<br>');
+    	radioBtnN.appendTo('#questions');
+
+    var radioBtnO = $('<input type="radio" id="radioO" name="geography4"><label for="radioO">' + geography.answerO + '</label>' + '<br>');
+    	radioBtnO.appendTo('#questions');
+
+    var radioBtnP = $('<input type="radio" id="radioP" name="geography4" value="c"><label for="radioP">' + geography.answerP + '</label>' + '<br>');
+    	radioBtnP.appendTo('#questions');
+
+    var submit = $('<input id="btnSubmit" type="submit" value="submit" />')
+    	submit.appendTo('#questions');
+
+    	$( "input" ).click(function () {
+		var selection = $('input[type="radio"]:checked').val();
+		alert(selection);	
+
+		});
+
+// ( $( "input:checked" ).val() + " is checked!" )
+	//Call the timer functions
+	reset();
+	// timerStart();
+
+	//Call the capture function to capture answers
+	// capture();
 
 	});
 
 	//World History Button
-	$("#worldhistory").on("click", function() {
+	// $("#worldhistory").on("click", function() {
+	// });
+
+	// $("#worldlanguages").on("click", function() {
+	// });
+
+	// $("#worldfoods").on("click", function() {
+	// });
+
+	// function capture() {
+
+	//Capture the radio buttons the user selects
+	// $( "input" ).on("click", function () {
+	// 	var selection = $('input[type="radio"]:checked').val();
+	// 	alert(selection);
+	// });
+
+ 	//Push the answers chosen into an array
+	// ($('input[name=geography1]:checked').val()).push(answersGuessed);
+	// ($('input[name=geography2]:checked').val()).push(answersGuessed);
+	// ($('input[name=geography3]:checked').val()).push(answersGuessed);
+	// ($('input[name=geography4]:checked').val()).push(answersGuessed);
+  	
+  	//send the answers Guessed to the result function to compare
+  	// result(answersGuessed);
+
+  	// };
+
+  	function results(a) {
+  	
+  	//compare the answersGuessed to the answers object of the array
+
+	for (i = 0; i < geography.answers.length; i++) {
+		if (geography.answers[i] === a[i]) {
 	
-	//Show the world history questions
+		correctAnswers++;
+		
+		} else if (geography.answers[i] != answersGuessed[i])
 
-	//Show the answer choices as radio buttons
-	//Don't allow selection of more than one radio button
-	//Call the timer function
+		incorrectAnswers++;
+	}
 
-	});
+		console.log(correctAnswers);
+		console.log(incorrectAnswers);
+	//Create the results div, and pop it into the html
+	// $('#questions').html("<p>Correct Answers " + correctAnswers + "</p>" +
+	// 	"<p>Incorrect Answers " + incorrectAnswers + "</p>")
 
-	$("#worldlanguages").on("click", function() {
-	//Show the world languages questions
-	//Show the answer choices as radio buttons
-	//Don't allow selection of more than one radio button
-	//Call the timer function
-
-	});
-
-	$("#worldfoods").on("click", function() {
-	//Show the world foods questions
-	//Show the answer choices as radio buttons
-	//Don't allow selection of more than one radio button
-	//Call the timer function
-
-	});
+	};
 
 
 });
