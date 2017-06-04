@@ -1,0 +1,31 @@
+
+body {
+
+	background-image: url(../images/earth2.jpg);
+	background-size: 85% 100%;
+	background-position: bottom left;
+	background-repeat: no-repeat;
+	color: white;
+}
+
+.container-fluid {
+	margin: 5%;
+}
+
+.categories {
+	margin: 1%;
+	padding: 1%;
+}
+
+#clock {
+	margin: 2%;
+}
+
+#questions {
+	margin-left: 3%;
+}
+
+#btnSubmit {
+	margin-top: 2%;
+
+}
